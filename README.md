@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+# Desafio 02 - GitHub Wiki / Repositórios com React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Projeto desenvolvido como parte da **Formação React Developer** na plataforma da **Digital Innovation One (DIO)**.
 
-## Available Scripts
+Nesta aplicação os usuários podem pesquisar repositórios públicos do GitHub através da API oficial (`api.github.com`), adicioná-los dinamicamente a uma lista interativa, visualizar detalhes e links diretos e remover repositórios da listagem.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Funcionalidades
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Busca de Repositórios:**
+  - Consulta assíncrona consumindo a API oficial do GitHub via **Axios**.
+  - Suporta entrada no formato `usuario/repositorio` ou link completo do GitHub (`https://github.com/usuario/repositorio`).
+  - Suporte a tecla **Enter** para busca rápida.
+  - Indicador de carregamento (`Buscando...`) durante a requisição.
+- **Validações e Tratamento de Erros:**
+  - Validação de entrada vazia.
+  - Prevenção de repositórios duplicados na lista.
+  - Tratamento de exceções e alertas amigáveis caso o repositório não seja encontrado (HTTP 404).
+- **Gerenciamento da Listagem:**
+  - Exibição de título, caminho completo, descrição do repositório e link externo com abertura em nova aba (`target="_blank"`).
+  - Remoção de repositórios individuais da lista utilizando o método imutável `.filter()`.
+- **Testes Automatizados:** Testes unitários com `@testing-library/react` cobrindo renderização, busca com mock de API e remoção de itens.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ Tecnologias Utilizadas
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React 18**
+- **JavaScript (ES6+)**
+- **Axios** (cliente HTTP)
+- **Styled-Components** (CSS-in-JS)
+- **Testing Library / Jest**
+- **GitHub REST API**
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📂 Estrutura do Projeto
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+trilha-react-desafio-2/
+├── public/                 # HTML e ícones estáticos
+├── src/
+│   ├── assets/             # Logo do GitHub
+│   ├── components/
+│   │   ├── Button/         # Botão reutilizável com estados
+│   │   ├── Input/          # Campo de texto customizado
+│   │   └── ItemRepo/       # Card/item de cada repositório listado
+│   ├── pages/
+│   │   ├── App.js          # Lógica principal, estados e integração com a API
+│   │   ├── App.test.js     # Testes automatizados com mocks
+│   │   └── styles.js       # Estilos da página principal
+│   ├── services/
+│   │   └── api.js          # Instância configurada do Axios
+│   ├── index.js            # Ponto de entrada do React DOM
+│   └── styles.js           # Estilos globais (reset CSS)
+├── package.json
+└── README.md
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## ⚙️ Como Executar
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Pré-requisitos
+- [Node.js](https://nodejs.org/) (versão 16+)
+- npm ou yarn
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 1. Clonar o repositório
+```bash
+git clone https://github.com/MuriloBGodoy/trilha-react-desafio-2.git
+cd trilha-react-desafio-2
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 2. Instalar dependências
+```bash
+npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 3. Iniciar a aplicação
+```bash
+npm start
+```
+Acesse [http://localhost:3000](http://localhost:3000) no seu navegador.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🧪 Como Rodar os Testes
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm test -- --watchAll=false
+```
 
-### Code Splitting
+Resultado:
+```text
+PASS src/pages/App.test.js
+  ✓ renderiza o input e o botao de busca
+  ✓ busca e exibe repositorio na lista
+  ✓ remove repositorio da lista ao clicar em Remover
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Tests: 3 passed, 3 total
+```
